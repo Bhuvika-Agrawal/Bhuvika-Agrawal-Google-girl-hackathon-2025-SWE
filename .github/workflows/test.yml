@@ -12,6 +12,7 @@ jobs:
     - name: 📥 Checkout Repository
       uses: actions/checkout@v4
 
+    # Python setup and test
     - name: 🛠 Set Up Python
       uses: actions/setup-python@v4
       with:
@@ -28,6 +29,7 @@ jobs:
           echo "⚠️ No Python tests found."
         fi
 
+    # C++ setup and test
     - name: 🛠 Set Up C++ Compiler
       run: sudo apt update && sudo apt install -y g++
 
@@ -39,6 +41,7 @@ jobs:
           echo "⚠️ No C++ test files found."
         fi
 
+    # Java setup and test
     - name: 🛠 Set Up Java Compiler
       run: sudo apt update && sudo apt install -y default-jdk
 
@@ -50,5 +53,19 @@ jobs:
           echo "⚠️ No Java test files found."
         fi
 
-    - name: ⚠️ Skipping JavaScript Tests (Node.js Not Installed)
-      run: echo "JavaScript tests are currently skipped due to missing Node.js."
+    # JavaScript setup and test (Node.js installation)
+    - name: 🛠 Set Up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+
+    - name: 📦 Install JavaScript Dependencies
+      run: npm install
+
+    - name: ⚙️ Run JavaScript Tests
+      run: |
+        if ls *.js 1> /dev/null 2>&1; then 
+          node *.js
+        else 
+          echo "⚠️ No JavaScript test files found."
+        fi
