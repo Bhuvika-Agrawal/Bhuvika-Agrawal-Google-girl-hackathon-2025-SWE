@@ -1,0 +1,54 @@
+name: Run Code Tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 📥 Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: 🛠 Set Up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: 🔍 Install Python Dependencies
+      run: pip install pytest
+
+    - name: 🧪 Run Python Tests
+      run: |
+        if ls *.py 1> /dev/null 2>&1; then 
+          pytest *.py
+        else 
+          echo "⚠️ No Python tests found."
+        fi
+
+    - name: 🛠 Set Up C++ Compiler
+      run: sudo apt update && sudo apt install -y g++
+
+    - name: 🏗 Compile & Run C++ Tests
+      run: |
+        if ls *.cpp 1> /dev/null 2>&1; then 
+          g++ -o test_exec *.cpp && ./test_exec
+        else 
+          echo "⚠️ No C++ test files found."
+        fi
+
+    - name: 🛠 Set Up Java Compiler
+      run: sudo apt update && sudo apt install -y default-jdk
+
+    - name: ☕ Compile & Run Java Tests
+      run: |
+        if ls *.java 1> /dev/null 2>&1; then 
+          javac *.java && java $(basename *.java .java)
+        else 
+          echo "⚠️ No Java test files found."
+        fi
+
+    - name: ⚠️ Skipping JavaScript Tests (Node.js Not Installed)
+      run: echo "JavaScript tests are currently skipped due to missing Node.js."
