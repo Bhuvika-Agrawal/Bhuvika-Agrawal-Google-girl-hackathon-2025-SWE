@@ -19,8 +19,8 @@ Developer Productivity: Intelligent IDE is an AI-powered assistant designed to e
 
 ### **1. Clone the Repository**  
 ```bash
-git clone [GitHub Repository URL]
-cd [Repository Name]
+git clone https://github.com/Bhuvika-Agrawal/Bhuvika-Agrawal-Google-girl-hackathon-2025-SWE
+cd Bhuvika-Agrawal-Google-girl-hackathon-2025-SWE
 ```
 
 ### **2. Set Up a Virtual Environment**  
