@@ -1,9 +1,68 @@
+# Environment Variables
 .env
+.env.local
+.env.*.local
+
+# Python
 __pycache__/
-*.log
+*.py[cod]
+*$py.class
 *.pyc
 *.pyo
-*.tmp
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+.venv/
+ENV/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
 .DS_Store
-node_modules/
+
+# Logs
+*.log
+logs/
+ide_assistant.log
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Generated Files
+generated_code.*
+test_generated_code.*
+optimized_code.*
+debugged_code.*
+*.backup.*
+
+# Temporary Files
+tmp/
+temp/
+*.tmp
 *.sqlite3
+
+# Cache
+.cache/
+
+# Node
+node_modules/
+
+# Test Files (not to be committed)
+test.py
+models.py
+comprehensive_test.py
+verify_solution.py
+
